@@ -1,0 +1,6 @@
+export default {
+	SET_ACTIVE_TAB: 'SET_ACTIVE_TAB',
+	ADD_QUEST_TEXT: 'ADD_QUEST_TEXT'
+
+}
+

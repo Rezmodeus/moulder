@@ -1,13 +1,13 @@
-import { applyMiddleware, createStore } from 'redux';
+import {applyMiddleware, createStore} from 'redux';
 import thunk from 'redux-thunk';
 import immutable from 'immutable';
-import { createLogger } from 'redux-logger'
+import {createLogger} from 'redux-logger'
 import INITIAL_STATE from './INITIAL_STATE';
-import QuestReducer from './reducers/QuestReducer';
+import Main from './reducers/Main';
 
 let state = INITIAL_STATE;
 
-const middlewares = [ thunk ];
+const middlewares = [thunk];
 
 // do not run logger in production mode.
 
@@ -25,5 +25,5 @@ if (process.env.NODE_ENV !== 'production') {
 
 const createStoreWithMiddleware = applyMiddleware(...middlewares)(createStore);
 
-export const Store = createStoreWithMiddleware(QuestReducer, state);
+export const Store = createStoreWithMiddleware(Main, state);
 
