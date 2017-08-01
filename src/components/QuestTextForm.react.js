@@ -1,30 +1,51 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {Form, FormGroup, ControlLabel, FormControl, Button} from 'react-bootstrap';
-const QuestTextForm = ({addQuestText}) => {
 
-	const doSubmit = (e) => {
+class QuestTextForm extends Component {
+	constructor(props) {
+		super(props);
+		this.doSubmit = this.doSubmit.bind(this);
+		this.onChange = this.onChange.bind(this);
+
+		this.state = {
+			speaker: '',
+			text: ''
+		};
+	}
+
+	doSubmit(e) {
 		e.preventDefault();
-		addQuestText('hej');
-	};
+		this.props.addQuestText(this.state.speaker, this.state.text, []);
+	}
 
-	return (
-		<Form inline onSubmit={doSubmit}>
-			<FormGroup controlId="formInlineName">
-				<ControlLabel>Speaker</ControlLabel>
+	onChange(prop, e) {
+		this.setState({[prop]: e.target.value});
+	}
+
+	render() {
+		return (
+			<Form inline onSubmit={this.doSubmit}>
+				<FormGroup controlId="formInlineName">
+					<ControlLabel>Speaker</ControlLabel>
+					{' '}
+					<FormControl type="text" placeholder="Jane Doe"
+					             onChange={(event) => this.onChange('speaker', event)}
+					/>
+				</FormGroup>
 				{' '}
-				<FormControl type="text" placeholder="Jane Doe"/>
-			</FormGroup>
-			{' '}
-			<FormGroup controlId="formInlineEmail">
-				<ControlLabel>Text</ControlLabel>
+				<FormGroup controlId="formInlineEmail">
+					<ControlLabel>Text</ControlLabel>
+					{' '}
+					<FormControl type="text" placeholder="I need your help"
+					             onChange={(event) => this.onChange('text', event)}
+					/>
+				</FormGroup>
 				{' '}
-				<FormControl type="text" placeholder="I need your help"/>
-			</FormGroup>
-			{' '}
-			<Button type="submit">
-				Add
-			</Button>
-		</Form>
-	)
-};
+				<Button type="submit">
+					Add
+				</Button>
+			</Form>
+		)
+	}
+}
 export default QuestTextForm

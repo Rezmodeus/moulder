@@ -1,12 +1,16 @@
 import React from 'react';
-// import {Button, Grid, Col, Row} from 'react-bootstrap';
+import immutable from 'immutable';
 import QuestTextForm from './QuestTextForm.react'
-export default function QuestText(props) {
+const QuestText = (props) => {
+	const cat = props.categories.get('questText') || immutable.List();
+	const keyTest = cat.map(k => <div key={k}>key:{k}</div>);
 	return (
 		<div>
 			<QuestTextForm {...props}/>
-
+			{keyTest}
 		</div>
 	)
-}
+};
+
+export default QuestText
 

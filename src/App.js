@@ -15,12 +15,6 @@ class App extends Component {
 		this.state = {};
 	}
 
-	handleSelect(key) {
-		alert('selected ' + key);
-		this.setState({key});
-	}
-
-
 	render() {
 		return (
 			<div className="App">
@@ -32,7 +26,7 @@ class App extends Component {
 					<Tab eventKey={'quests'} title="quests">
 						<QuestTab {...this.props}/>
 					</Tab>
-					<Tab eventKey={'strings'} title="strings">
+					<Tab eventKey={'QuestTexts'} title="QuestTexts">
 						<QuestText {...this.props}/>
 					</Tab>
 					<Tab eventKey={'choices'} title="choices">choices tab content</Tab>
@@ -52,7 +46,8 @@ class App extends Component {
 function mapStateToProps(state) {
 	return {
 		activeTab: state.get('activeTab'),
-		db: state.get('db')
+		db: state.get('db'),
+		categories: state.get('categories')
 	};
 }
 

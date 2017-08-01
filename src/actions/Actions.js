@@ -9,7 +9,7 @@ export default {
 	},
 	addQuestText (speaker, text, choices) {
 		return {
-			type: Constants.ADD_QUEST_TEXT,
+			type: Constants.SET_QUEST_TEXT,
 			speaker,
 			text,
 			choices
