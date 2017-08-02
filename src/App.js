@@ -4,7 +4,7 @@ import logo from './logo.svg';
 import './App.css';
 import Actions from './actions/Actions';
 import QuestTab from './components/QuestTab.react'
-import QuestText from './components/QuestText.react'
+import QuestTextTab from './components/QuestTextTab.react'
 import {Tab, Tabs} from 'react-bootstrap';
 
 class App extends Component {
@@ -26,8 +26,8 @@ class App extends Component {
 					<Tab eventKey={'quests'} title="quests">
 						<QuestTab {...this.props}/>
 					</Tab>
-					<Tab eventKey={'QuestTexts'} title="QuestTexts">
-						<QuestText {...this.props}/>
+					<Tab eventKey={'questTexts'} title="questTexts">
+						<QuestTextTab {...this.props}/>
 					</Tab>
 					<Tab eventKey={'choices'} title="choices">choices tab content</Tab>
 					<Tab eventKey={'items'} title="items">items tab content</Tab>

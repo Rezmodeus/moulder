@@ -15,9 +15,18 @@ export default function (state, action) {
 				text: action.text,
 				choices: action.choices
 			};
-			const record = Records.get('questText').merge(immutable.fromJS(obj));
+
 			state = ReducerLib.stepKey(state);
-			state = state.setIn(['db', state.get('key')], record);
+			const key = state.get('key');
+
+			const record = Records.get('questText').merge(immutable.fromJS(obj));
+			state = state.setIn(['db', key], record);
+
+			const isFirst = (state.getIn(['categories','questText']) || immutable.List()).size === 0;
+			state = isFirst
+				? state.set('questStartKey',key)
+				: state;
+
 			state = ReducerLib.updateCategories(state);
 			return state;
 		default:
