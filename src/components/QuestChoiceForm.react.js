@@ -9,13 +9,13 @@ class QuestChoiceForm extends Component {
 
 		this.state = {
 			text: '',
-			nextKey: ''
+			nextKey: 'Nothing'
 		};
 	}
 
 	doSubmit(e) {
 		e.preventDefault();
-		// this.props.addQuestText(this.state.speaker, this.state.text, []);
+		this.props.setChoice(this.state.text, this.state.nextKey, '');
 	}
 
 	onChange(prop, e) {
@@ -26,23 +26,25 @@ class QuestChoiceForm extends Component {
 		return (
 			<Form inline onSubmit={this.doSubmit}>
 				<FormGroup controlId="formInlineName">
-					<ControlLabel>choice</ControlLabel>
+					<ControlLabel>choice text</ControlLabel>
 					{' '}
 					<FormControl type="text" placeholder="some choice"
 					             onChange={(event) => this.onChange('text', event)}
+					             value={this.state.text}
 					/>
 				</FormGroup>
 				{' '}
 				<FormGroup controlId="formInlineEmail">
-					<ControlLabel>Text</ControlLabel>
+					<ControlLabel>nextKey</ControlLabel>
 					{' '}
 					<FormControl type="text" placeholder="next key"
 					             onChange={(event) => this.onChange('nextKey', event)}
+					             value={this.state.nextKey}
 					/>
 				</FormGroup>
 				{' '}
 				<Button type="submit">
-					Add
+					Set
 				</Button>
 			</Form>
 		)

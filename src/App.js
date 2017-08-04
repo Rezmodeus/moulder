@@ -47,6 +47,7 @@ function mapStateToProps(state) {
 	return {
 		activeTab: state.get('activeTab'),
 		db: state.get('db'),
+		currentDbKey: state.get('currentDbKey'),
 		categories: state.get('categories')
 	};
 }
@@ -54,7 +55,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
 	return {
 		setActiveTab: (tab) => dispatch(Actions.setActiveTab(tab)),
-		addQuestText: (speaker, text, choices) => dispatch(Actions.addQuestText(speaker, text, choices))
+		addQuestText: (speaker, text, choices) => dispatch(Actions.addQuestText(speaker, text, choices)),
+		setChoice: (text, nextKey, key) => dispatch(Actions.setChoice(text, nextKey, key))
 	};
 }
 

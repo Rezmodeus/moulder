@@ -7,12 +7,22 @@ export default {
 			tab
 		};
 	},
+
 	addQuestText (speaker, text, choices) {
 		return {
 			type: Constants.SET_QUEST_TEXT,
 			speaker,
 			text,
 			choices
+		};
+	},
+
+	setChoice(text, nextKey, key = 'Nothing'){
+		return {
+			type: Constants.SET_CHOICE,
+			text,
+			nextKey,
+			key
 		};
 	}
 }

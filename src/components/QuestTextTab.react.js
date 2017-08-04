@@ -6,14 +6,13 @@ import {Button} from 'react-bootstrap';
 const QuestText = (props) => {
 	const catKeys = props.categories.get('questText') || immutable.List();
 	const keyTest = catKeys.map(k => <div key={k}>key:{k}</div>);
+	const content = catKeys.size === 0
+		? <Button onClick={()=>props.addQuestText('Nothing', '', [])}>new text</Button>
+		: <QuestTextForm {...props}/>;
+
 	return (
 		<div>
-			<QuestTextForm {...props}/>
-			<QuestChoiceForm {...props}/>
-			<Button >
-				Add response
-			</Button>
-			{keyTest}
+			{content}
 		</div>
 	)
 };

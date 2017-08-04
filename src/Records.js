@@ -6,6 +6,12 @@ export default fromJS({
 		speaker: '',
 		text: '',
 		choices: []
+	},
+
+	choice: {
+		type: 'choice',
+		text: '',
+		nextKey: ''
 	}
 })
 
